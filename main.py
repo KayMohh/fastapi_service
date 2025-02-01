@@ -18,7 +18,7 @@ app.add_middleware(
     allow_origins=["*"],  # Allow all origins
     allow_methods=["GET"],  # Allowed HTTP methods
     allow_headers=["*"],  # Allow all headers
-
+)
 @app.get("/")
 async def root():
     return {"message": "Welcome to my HNG Api"}
