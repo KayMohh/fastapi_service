@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
 from typing import Union
 from datetime import datetime
+from fastapi.responses import JSONResponse
 
 app = FastAPI(
     title="My API",
