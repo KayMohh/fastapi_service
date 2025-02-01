@@ -4,37 +4,34 @@ from fastapi import FastAPI
 from typing import Union
 from datetime import datetime
 
-app = FastAPI()
+app = FastAPI(
+    title="My API",
+    description="This is a sample FastAPI application for HNG internship.",
+    version="1.0.0",
+    default_response_class=JSONResponse
+)  # Create an instance of FastAPI
 
-origins = ["*"]
+# ✅ Add CORS Middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+    allow_origins=["*"],  # Allow all origins
+    allow_methods=["GET"],  # Allowed HTTP methods
+    allow_headers=["*"],  # Allow all headers
 
 @app.get("/")
 async def root():
     return {"message": "Welcome to my HNG Api"}
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}
-
 @app.get('/hng')
 def get_data():
     email = 'thrilltim@gmail.com'
     current_datetime =  datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
-    github_repo_url = "https://github.com/kaymohh/HNG"
+    github_repo_url = "https://github.com/KayMohh/fastapi_service"
 
-    current_day = datetime.now().strftime("%A")
-
-    return {
+      return {
         'email' : email,
         'current_datetime' : current_datetime,
-        'github_repo_url' : github_repo_url,
-        "status_code": 200,
-
+        'github_url' : github_repo_url,
+      
     }
+      return JSONResponse(content=data)
