@@ -28,11 +28,11 @@ def get_data():
     email = 'thrilltim@gmail.com'
     current_datetime =  datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
     github_repo_url = "https://github.com/KayMohh/fastapi_service"
-
-      return {
+    
+    return {
         'email' : email,
         'current_datetime' : current_datetime,
         'github_url' : github_repo_url,
       
     }
-      return JSONResponse(content=data)
+    return JSONResponse(content=data)
